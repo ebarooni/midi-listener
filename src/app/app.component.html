@@ -1,7 +1,21 @@
+<mat-form-field>
+  <mat-label>Channel</mat-label>
+  <mat-select [(ngModel)]="myChannel">
+    <mat-option *ngFor="let channel of channels" [value]="channel">
+      {{channel}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-<mat-select [(ngModel)]="myChannel">
-  <mat-label>channel</mat-label>
-  <mat-option *ngFor="let channel of channels" [value]="channel">
-    {{channel}}
-  </mat-option>
-</mat-select>
+<div *ngIf="myInputs; else waiting">
+  <mat-form-field>
+    <mat-label>midi inputs</mat-label>
+    <mat-select [(ngModel)]="myInput">
+      <mat-option *ngFor="let input of myInputs" [value]="input.id">
+        {{input.name}} {{input.id}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<ng-template #waiting></ng-template>
