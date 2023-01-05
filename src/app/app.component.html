@@ -20,30 +20,25 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="row">
+          <div class="row" *ngIf="myInputs; else waiting">
             <mat-form-field>
-              <mat-label>Channel</mat-label>
-              <mat-select [(ngModel)]="myChannel">
-                <mat-option *ngFor="let channel of channels" [value]="channel">
-                  {{channel}}
+              <mat-label>midi inputs</mat-label>
+              <mat-select [(ngModel)]="myInput">
+                <mat-option *ngFor="let input of myInputs" [value]="input.id">
+                  {{input.name}} {{input.id}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
+          <ng-template #waiting>
+            <div class="row">
+              <div class="alert alert-warning" role="alert">
+                No MIDI input devices found - Try to refresh!
+              </div>
+            </div>
+          </ng-template>
         </div>
       </div>
-
-      <div *ngIf="myInputs; else waiting">
-        <mat-form-field>
-          <mat-label>midi inputs</mat-label>
-          <mat-select [(ngModel)]="myInput">
-            <mat-option *ngFor="let input of myInputs" [value]="input.id">
-              {{input.name}} {{input.id}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <ng-template #waiting></ng-template>
     </div>
   </div>
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
