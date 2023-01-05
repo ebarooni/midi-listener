@@ -10,6 +10,7 @@ import MIDIAccess = WebMidi.MIDIAccess;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  readonly year = new Date().getFullYear();
   title = 'midi-listener';
   myChannel = 0
   channels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
