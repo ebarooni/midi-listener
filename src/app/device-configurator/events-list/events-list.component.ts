@@ -16,13 +16,6 @@ export class EventsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formatEventsList(event: MIDIMessageEvent): {deviceName: string, data: Uint8Array} {
-    return {
-      deviceName: (event.currentTarget as any)?.name,
-      data: event.data
-    }
-  }
-
   manuallyCopyEventToClipBoard(data: Uint8Array): void {
     this.clipboard.copy(`${data[1]}_${data[2]}`);
   }
