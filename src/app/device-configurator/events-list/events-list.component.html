@@ -1,0 +1,10 @@
+<div class="d-flex flex-column mat-elevation-z2">
+  <div class="row shadow-sm mx-0 my-0 py-3 px-3 fs-5" mat-subheader>{{listName}}</div>
+  <mat-list class="flex-grow-0 flex-shrink-0">
+    <mat-list-item *ngFor="let event of eventsList?.map(formatEventsList)" class="justify-content-between">
+      <mat-icon class="text-dark" matListItemIcon>copy_content</mat-icon>
+      <div matListItemTitle>{{event.deviceName}}</div>
+      <div matListItemLine>{{event.data}}</div>
+    </mat-list-item>
+  </mat-list>
+</div>

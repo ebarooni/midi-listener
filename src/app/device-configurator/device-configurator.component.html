@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-header class="mb-3">
+    <mat-card-title>Configurator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <mat-form-field [appearance]="appearance">
+            <mat-label>Channels</mat-label>
+            <mat-select [value]="selectedChannel"
+                        (selectionChange)="onChannelSelectionChange($event)">
+              <mat-option *ngFor="let channel of midiChannel"
+                          [value]="channel">
+                {{channel}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field [appearance]="appearance">
+            <mat-label>Input Devices</mat-label>
+            <mat-select multiple
+                        (selectionChange)="onSelectedInputDevicesChange($event)"
+                        [value]="selectedInputs">
+              <mat-option *ngFor="let input of availableInputDevices"
+                          [value]="input.id">
+                {{input.name}} {{input.id}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <mat-checkbox [checked]="copyToClipBoard" (change)="onCopyToClipboardChange($event)">Copy events to clipboard</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="my-3"></mat-divider>
+    <div class="row gy-3">
+      <div class="col-md-4">
+        <div class="row">
+          <app-events-list [eventsList]="copiedEvents" [listName]="'Copied Events'"></app-events-list>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <app-events-list [eventsList]="skippedEvents" [listName]="'Skipped Events'"></app-events-list>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <app-events-list [eventsList]="skippedEvents" [listName]="'Skipped Events'"></app-events-list>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
